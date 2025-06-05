@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RahmaCodeID</title>
+    <link rel="icon" href="https://files.catbox.moe/fp24p6.jpeg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #ff6b9e;
+            --secondary-pink: #ff8fab;
+            --light-pink: #ffc2d1;
+            --dark-pink: #d94a7e;
+            --white: #fff9fb;
+            --black: #2a2a2a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--black);
+            overflow-x: hidden;
+        }
+        
+        .decoration {
+            position: absolute;
+            opacity: 0.7;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }        
+        
+        main {
+            margin-top: 80px;
+            padding: 2rem;
+        }
+        
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 4rem 0;
+            position: relative;
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--dark-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--black);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--dark-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .profile-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--light-pink);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 158, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 107, 158, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 158, 0); }
+        }
+        
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--dark-pink);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-pink);
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--light-pink);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-pink);
+        }
+        
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--dark-pink);
+        }
+        
+        .skill-level {
+            font-size: 0.9rem;
+            color: var(--black);
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-card.active .skill-level {
+            opacity: 1;
+            height: auto;
+            margin-top: 1rem;
+        }
+        
+        .quotes-section {
+            background: linear-gradient(135deg, var(--light-pink), var(--secondary-pink));
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .video-quote {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .text-quotes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .quote-card {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quote-card::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary-pink);
+            opacity: 0.2;
+            font-family: serif;
+        }
+        
+        .quote-card p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-card .author {
+            font-weight: 600;
+            color: var(--dark-pink);
+            text-align: right;
+        }
+        
+        .quiz-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-header h2 {
+            color: var(--dark-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-header p {
+            color: var(--black);
+        }
+        
+        .quiz-progress {
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .quiz-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, var(--light-pink), var(--primary-pink));
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .question-container {
+            margin-bottom: 2rem;
+        }
+        
+        .question {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark-pink);
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .option {
+            background-color: #f9f9f9;
+            border: 2px solid #f0f0f0;
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            background-color: var(--light-pink);
+            border-color: var(--primary-pink);
+        }
+        
+        .option.selected {
+            background-color: var(--primary-pink);
+            color: white;
+            border-color: var(--primary-pink);
+        }
+        
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .quiz-result {
+            text-align: center;
+            display: none;
+        }
+        
+        .quiz-result h3 {
+            font-size: 2rem;
+            color: var(--dark-pink);
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-result p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-pink);
+            margin: 1rem 0;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .social-links {
+            margin: 1.5rem 0;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            color: var(--light-pink);
+        }
+        
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .quiz-container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration" style="top: 15%; left: 5%; font-size: 30px; color: var(--primary-pink);">🦋</div>
+    <div class="decoration" style="top: 25%; right: 8%; font-size: 20px; color: var(--secondary-pink);">✦</div>
+    <div class="decoration" style="top: 60%; left: 10%; font-size: 25px; color: var(--primary-pink);">🦋</div>
+    <div class="decoration" style="top: 70%; right: 5%; font-size: 30px; color: var(--secondary-pink);">✦</div>
+    <div class="decoration" style="top: 40%; left: 15%; font-size: 20px; color: var(--primary-pink);">✦</div>
+    <div class="decoration" style="top: 50%; right: 15%; font-size: 25px; color: var(--secondary-pink);">🦋</div>
+    
+    <header>
+        <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>RahmaCodeID</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#quotes">Kutipan</a></li>
+                <li><a href="#quiz">Kuis Programmer</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Halo, Saya Rahma</h1>
+                <p>Seorang programmer wanita yang bersemangat dalam pengembangan web dan desain. Saya menciptakan website yang indah, fungsional dengan sentuhan feminin yang menonjol dari yang lain.</p>
+                <a href="#about" class="btn">Jelajahi Karya Saya</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://files.catbox.moe/vhveoa.jpg" alt="Foto Profil Rahma" class="profile-img">
+            </div>
+        </section>
+        
+        <section id="about" class="section">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Selamat datang di dunia coding saya! Saya Rahma, seorang developer wanita Indonesia dengan hasrat menciptakan pengalaman digital yang indah dan fungsional. Dengan latar belakang ilmu komputer dan desain, saya menjembatani kesenjangan antara estetika dan fungsionalitas.</p>
+                    <p>Perjalanan saya di dunia teknologi dimulai ketika saya berusia 15 tahun, dan saya jatuh cinta dengan coding sejak saat itu. Saya percaya bahwa teknologi harus mudah diakses, intuitif, dan tentu saja - cantik! Itulah mengapa saya berspesialisasi dalam membuat antarmuka yang menyenangkan dilihat seperti halnya digunakan.</p>
+                    <p>Ketika tidak sedang coding, Anda bisa menemukan saya membimbing anak perempuan dalam teknologi, menghadiri hackathon, atau mengeksplorasi tren desain baru yang bisa saya terapkan dalam pekerjaan saya.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://files.catbox.moe/9jyzan.jpg" alt="Rahma sedang bekerja">
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="section">
+            <h2 class="section-title">Keahlian Saya</h2>
+            <div class="skills-container">
+                <div class="skill-card" onclick="toggleSkill(this)">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <div class="skill-level">Mahir</div>
+                </div>
+                <div class="skill-card" onclick="toggleSkill(this)">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <div class="skill-level">Mahir</div>
+                </div>
+                <div class="skill-card" onclick="toggleSkill(this)">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <div class="skill-level">Mahir</div>
+                </div>
+                <div class="skill-card" onclick="toggleSkill(this)">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <div class="skill-level">Mahir</div>
+                </div>
+                <div class="skill-card" onclick="toggleSkill(this)">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                    <div class="skill-level">Menengah</div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quotes" class="section">
+            <h2 class="section-title">Pojok Inspirasi</h2>
+            <div class="quotes-section">
+                <video class="video-quote" controls autoplay muted loop>
+                    <source src="https://files.catbox.moe/w9ipfi.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+                
+                <div class="text-quotes">
+                    <div class="quote-card">
+                        <p>Frase yang paling merusak dalam bahasa adalah "Kami selalu melakukannya dengan cara ini!"</p>
+                        <div class="author">- Grace Hopper</div>
+                    </div>
+                    <div class="quote-card">
+                        <p>Pemrograman bukan tentang apa yang Anda tahu; ini tentang apa yang bisa Anda temukan.</p>
+                        <div class="author">- Chris Pine</div>
+                    </div>
+                    <div class="quote-card">
+                        <p>Komputer lahir untuk memecahkan masalah yang sebelumnya tidak ada.</p>
+                        <div class="author">- Bill Gates</div>
+                    </div>
+                    <div class="quote-card">
+                        <p>Pertama, selesaikan masalahnya. Kemudian, tulis kodenya.</p>
+                        <div class="author">- John Johnson</div>
+                    </div>
+                    <div class="quote-card">
+                        <p>Buatlah bekerja, buatlah benar, buatlah cepat.</p>
+                        <div class="author">- Kent Beck</div>
+                    </div>
+                    <div class="quote-card">
+                        <p>Orang bodoh mana pun bisa menulis kode yang bisa dimengerti komputer. Programmer yang baik menulis kode yang bisa dimengerti manusia.</p>
+                        <div class="author">- Martin Fowler</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="quiz" class="section">
+            <h2 class="section-title">Kuis Programmer</h2>
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2>Uji Pengetahuan Pemrograman Anda</h2>
+                    <p>Ikuti kuis 10 pertanyaan ini untuk menguji keterampilan pemrograman Anda!</p>
+                </div>
+                
+                <div class="quiz-progress">
+                    <div class="quiz-progress-bar" id="progressBar"></div>
+                </div>
+                
+                <div id="quizContent">
+                    <div class="question-container" id="questionContainer">
+                        <div class="question" id="question"></div>
+                        <div class="options" id="options"></div>
+                    </div>
+                    
+                    <div class="quiz-navigation">
+                        <button class="btn" id="prevBtn" disabled>Sebelumnya</button>
+                        <button class="btn" id="nextBtn">Selanjutnya</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-result" id="quizResult">
+                    <h3>Kuis Selesai!</h3>
+                    <p>Skor akhir Anda:</p>
+                    <div class="score" id="finalScore">0/10</div>
+                    <button class="btn" id="restartBtn">Ulangi Kuis</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">
+            <i class="fas fa-laptop-code"></i>
+            <span>RahmaCodeID</span>
+        </div>
+        <p>Coding Feminin dengan Sentuhan Kreatif</p>
+        
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+        
+        <p>&copy; 2023 RahmaCodeID. Semua hak dilindungi.</p>
+    </footer>
+    
+    <script>
+        function toggleSkill(card) {
+            card.classList.toggle('active');
+        }
+ 
+        const quizQuestions = [
+            {
+                question: "Apa kepanjangan dari HTML?",
+                options: [
+                    "Hyper Text Markup Language",
+                    "High Tech Modern Language",
+                    "Hyperlinks and Text Markup Language",
+                    "Home Tool Markup Language"
+                ],
+                answer: 0
+            },
+            {
+                question: "Manakah yang BUKAN framework JavaScript?",
+                options: [
+                    "React",
+                    "Angular",
+                    "Laravel",
+                    "Vue"
+                ],
+                answer: 2
+            },
+            {
+                question: "Apa kepanjangan dari CSS?",
+                options: [
+                    "Creative Style Sheets",
+                    "Computer Style Sheets",
+                    "Cascading Style Sheets",
+                    "Colorful Style Sheets"
+                ],
+                answer: 2
+            },
+            {
+                question: "Bahasa apa yang dikenal sebagai 'bahasa web'?",
+                options: [
+                    "Python",
+                    "Java",
+                    "JavaScript",
+                    "C++"
+                ],
+                answer: 2
+            },
+            {
+                question: "Bagaimana cara menulis perulangan for yang benar di JavaScript?",
+                options: [
+                    "for (i = 0; i < 5; i++)",
+                    "for i = 1 to 5",
+                    "for (i <= 5; i++)",
+                    "for (int i = 0; i < 5; i++)"
+                ],
+                answer: 0
+            },
+            {
+                question: "Manakah yang merupakan framework web Python?",
+                options: [
+                    "Django",
+                    "Spring",
+                    "Ruby on Rails",
+                    "Express"
+                ],
+                answer: 0
+            },
+            {
+                question: "Apa kepanjangan dari API?",
+                options: [
+                    "Application Programming Interface",
+                    "Advanced Programming Interface",
+                    "Automated Programming Interface",
+                    "Application Process Integration"
+                ],
+                answer: 0
+            },
+            {
+                question: "Simbol apa yang digunakan untuk komentar satu baris di JavaScript?",
+                options: [
+                    "//",
+                    "/*",
+                    "#",
+                    "--"
+                ],
+                answer: 0
+            },
+            {
+                question: "Bagaimana cara membuat fungsi yang benar di Python?",
+                options: [
+                    "function myFunction():",
+                    "def myFunction():",
+                    "create myFunction():",
+                    "func myFunction():"
+                ],
+                answer: 1
+            },
+            {
+                question: "Metode apa yang mengubah objek JavaScript menjadi string JSON?",
+                options: [
+                    "JSON.parse()",
+                    "JSON.stringify()",
+                    "object.toJSON()",
+                    "JSON.convert()"
+                ],
+                answer: 1
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizQuestions.length).fill(null);
+        let quizTimeout;
+        
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const progressBar = document.getElementById('progressBar');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const quizContent = document.getElementById('quizContent');
+        const quizResult = document.getElementById('quizResult');
+        const finalScore = document.getElementById('finalScore');
+        const restartBtn = document.getElementById('restartBtn');
+        
+        function loadQuestion() {
+            clearTimeout(quizTimeout);
+            
+            const question = quizQuestions[currentQuestion];
+            questionElement.textContent = `${currentQuestion + 1}. ${question.question}`;
+            
+            optionsElement.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.classList.add('option');
+                if (userAnswers[currentQuestion] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.addEventListener('click', () => selectOption(index));
+                optionsElement.appendChild(optionElement);
+            });
+            
+            progressBar.style.width = `${((currentQuestion + 1) / quizQuestions.length) * 100}%`;
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizQuestions.length - 1 ? 'Selesai' : 'Selanjutnya';
+            
+            quizTimeout = setTimeout(() => {
+                if (userAnswers[currentQuestion] === null) {
+                    userAnswers[currentQuestion] = -1;
+                    nextQuestion();
+                }
+            }, 10000);
+        }
+        
+        function selectOption(index) {
+            clearTimeout(quizTimeout);
+            const options = document.querySelectorAll('.option');
+            options.forEach(option => option.classList.remove('selected'));
+            options[index].classList.add('selected');
+            userAnswers[currentQuestion] = index;
+            
+            setTimeout(nextQuestion, 1000);
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            clearTimeout(quizTimeout);
+            score = 0;
+            for (let i = 0; i < quizQuestions.length; i++) {
+                if (userAnswers[i] === quizQuestions[i].answer) {
+                    score++;
+                }
+            }
+            
+            quizContent.style.display = 'none';
+            quizResult.style.display = 'block';
+            finalScore.textContent = `${score}/${quizQuestions.length}`;
+        }
+        
+        prevBtn.addEventListener('click', () => {
+            clearTimeout(quizTimeout);
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                loadQuestion();
+            }
+        });
+        
+        nextBtn.addEventListener('click', () => {
+            clearTimeout(quizTimeout);
+            if (userAnswers[currentQuestion] === null) {
+                userAnswers[currentQuestion] = -1;
+            }
+            
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                loadQuestion();
+            } else {
+                showResult();
+            }
+        });
+        
+        restartBtn.addEventListener('click', () => {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizQuestions.length).fill(null);
+            quizContent.style.display = 'block';
+            quizResult.style.display = 'none';
+            loadQuestion();
+        });
+        
+        loadQuestion();
+       
+        document.addEventListener('DOMContentLoaded', () => {
+            const video = document.querySelector('.video-quote');
+            if (video) {
+                video.play().catch(e => console.log('Auto-play dicegah:', e));
+            }
+        });
+    </script>
+</body>
+</html>
